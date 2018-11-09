@@ -12,7 +12,7 @@ public class ViscaResponseReader {
     public ViscaResponseReader() {
     }
 
-    public static byte[] readResponse(SerialPort serialPort) throws pl.edu.agh.kis.visca.ViscaResponseReader.TimeoutException, SerialPortException {
+    public static byte[] readResponse(SerialPort serialPort) throws TimeoutException, SerialPortException {
         ArrayList<Byte> data = new ArrayList();
         long startTime = System.currentTimeMillis();
 
@@ -39,7 +39,7 @@ public class ViscaResponseReader {
             timeDiff = currentTime - startTime;
         } while(timeDiff <= 5000L);
 
-        throw new pl.edu.agh.kis.visca.ViscaResponseReader.TimeoutException();
+        throw new TimeoutException();
     }
 
     public static class TimeoutException extends Exception {
